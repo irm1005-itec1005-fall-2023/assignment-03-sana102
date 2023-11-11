@@ -1,40 +1,119 @@
-const inputBox = document.getElementById("input-box");
-const listContainer = document.getElementById("list-container");
+// Data storage - Initialize the array of To Do items
+let todoItems = [];
+let w = [0];
 
-function addTask() {
-  if (inputBox.value === '') {
-    alert("You must write something!");
+// Function to add a todo to the list
+function addToDoItem(text) {
+  if (typeof text === "string") {
+    console.log("Thank you");
+    w[0]++;
+    let isCompleted = false;
+    let ID = w[0];
+
+    // Check if ID already exists, generate a new one if needed
+    while (todoItems.some(item => item.id === ID)) {
+      ID = Math.floor(Math.random() * 9999);
+    }
+
+    let Obj = { id: ID, text: text, completed: isCompleted };
+    todoItems.push(Obj);
+    console.log(todoItems);
   } else {
-    let li = document.createElement("li");
-    li.innerHTML = inputBox.value;
-    listContainer.appendChild(li);
-    let span = document.createElement("span");
-    span.innerHTML = "\u00d7";
-    li.appendChild(span);
-    inputBox.value = "";
-    saveData();
+    console.log("Please input a string");
   }
 }
 
-listContainer.addEventListener("click", function (e) {
-  if (e.target.tagName === "LI") {
-    e.target.classList.toggle("checked");
-    saveData();
-  } else if (e.target.tagName === "SPAN") {
-    e.target.parentElement.remove();
-    saveData();
-  }
-});
+// Function to remove a todo from the list
+function removeToDoItem(todoId) {
+  if (Number.isInteger(todoId) && todoId > 0) {
+    console.log("Good ID");
+    let newArray = [];
+    let removed = false;
 
-function saveData() {
-  localStorage.setItem("data", listContainer.innerHTML);
+    for (let i = 0; i < todoItems.length; i++) {
+      if (todoItems[i].id === todoId) {
+        console.log("Removed");
+        removed = true;
+      } else {
+        newArray.push(todoItems[i]);
+      }
+    }
+    if (!removed) {
+      console.log("Todo item with the provided ID not found");
+    }
+
+    todoItems = newArray;
+  } else {
+    console.log("Please input a valid ID");
+  }
 }
 
-function showTask() {
-  const savedData = localStorage.getItem("data");
-  if (savedData) {
-    listContainer.innerHTML = savedData;
+// Function to mark a task as completed
+function markToDoItemAsCompleted(todoId) {
+  if (Number.isInteger(todoId) && todoId > 0) {
+    console.log(todoItems[0].id);
+
+    let found = false;
+
+    for (let i = 0; i < todoItems.length; i++) {
+      if (todoItems[i].id === todoId) {
+        todoItems[i].completed = true;
+        found = true;
+        console.log("Marked as completed");
+      }
+    }
+
+    if (!found) {
+      console.log("Todo item with the provided ID not found");
+    }
+  } else {
+    console.log("Please use a number");
   }
 }
 
-showTask();
+// Function to delete a task from the array
+function deleteToDoItem(todoId) {
+  if (Number.isInteger(todoId) && todoId > 0) {
+    console.log("Good ID");
+    let newArray = [];
+    let removed = false;
+
+    for (let i = 0; i < todoItems.length; i++) {
+      if (todoItems[i].id === todoId) {
+        console.log("Removed");
+        removed = true;
+      } else {
+        newArray.push(todoItems[i]);
+      }
+    }
+
+    if (!removed) {
+      console.log("Todo item with the provided ID not found");
+    }
+
+    todoItems = newArray;
+  } else {
+    console.log("Please input a valid ID");
+  }
+}
+
+// Function to clear all completed tasks
+function clearCompletedTasks() {
+  let completedTasks = [];
+
+  for (let i = 0; i < todoItems.length; i++) {
+    if (todoItems[i].completed) {
+      console.log("Completed task removed");
+    } else {
+      completedTasks.push(todoItems[i]);
+    }
+  }
+
+  todoItems = completedTasks;
+}
+addToDoItem("First task");
+addToDoItem(123);
+removeToDoItem(2);
+markToDoItemAsCompleted(1);
+deleteToDoItem(3); 
+clearCompletedTasks();

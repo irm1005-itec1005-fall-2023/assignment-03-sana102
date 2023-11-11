@@ -1,115 +1,93 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  box-sizing: border-box;
-}
+/*
+ * CSS File for the solution
+ * Assignment 03
+ * You can modify these styles but you don't have to
+ */
 
-.container {
-  width: 100%;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f7c0da, #f7c2d1);
-  padding: 10px;
-}
 
-.todo-app {
-  width: 100%;
-  max-width: 540px;
-  background: #fefefe;
-  margin: 100px auto 20px;
-  padding: 40px 40px 70px;
-  border-radius: 40px; 
-}
-
-.todo-app h2 {
-  margin-left: 93px;
-  color: #f7c2d1;
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.todo-app h2 img {
-  width: 40px;
-  margin-left: 10px;
-}
-
-.row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #edeef0;
-  border-radius: 30px;
-  padding-left: 20px;
-  margin-bottom: 25px;
-}
-
-input {
-  flex: 1;
-  border: none;
-  outline: none;
-  background: transparent;
-  padding: 10px;
-}
-
-button {
-  border: none;
-  outline: none;
-  padding: 16px 50px;
-  background: #f7c2d1;
-  color: #fffcfc;
-  font-size: 16px;
-  border-radius: 25px;
-  cursor: pointer;
-}
-button:hover {
-  opacity: 0.7;
-}
-
-ul li {
-  list-style: none;
-  font-size: 17px;
-  padding: 11px 9px 12px 50px;
-  user-select: none;
-  cursor: pointer;
-  position: relative;
-}
-
-ul li::before {
-  content: '';
-  position: absolute;
-  height: 28px;
-  width: 28px;
-  border-radius: 50%;
-  background: url(https://media.discordapp.net/attachments/1038619816396865648/1171655452933771274/hiw.png?ex=655d782c&is=654b032c&hm=06cc2976cf6407babfef782d3d69f2082a81f092aa2cc68019b5954bd74af0ad&=&width=156&height=156) center/cover;
-  top: 12px;
-  left: 8px;
-}
-
-ul li.checked {
-  color: #f7c2d1;
-  text-decoration: line-through;
-}
-
-ul li.checked::before {
-  background: url(./checkmark.png) center/cover;
-  border-radius: 2px;
+ body {
+    color: #3c544a;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ff9e00;
   
-}
-
-ul li span {
-  position: absolute;
-  right: 0;
-  top: 5px;
-  width: 40px;
-  height: 40px;
-  font-size: 22px;
-  color: #b08c8c;
-  line-height: 40px;
-  text-align: center;
-  border-radius: 50%;
-}
-
-ul li span:hover {
-  background: #edeef0;
-}
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  main {
+    margin: 1rem 1rem;
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+  
+    border: 4px solid #240046;
+    background-color: #cdb0e5;
+    color: #240046;
+    max-width: 600px;
+  
+    display: block;
+  }
+  
+  @media screen and (min-width: 900px) {
+    main {
+      max-width: 800px;
+    }
+  
+  }
+  
+  @media screen and (min-width: 1200px) {
+    main {
+      max-width: 1100px;
+    }
+  
+  }
+  
+  h2 {
+    margin-top: 1rem;
+  }
+  
+  .btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .btn {
+    margin: 1rem 0 0.5rem 0;
+    display: inline-block;
+    padding: 1rem 4rem;
+    border-radius: 2rem;
+    border: 4px solid #240046;
+    background-color: #9d4edd;
+    color: #240046;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    border-color: #ff6d00;
+    background-color: #ff8500;
+    color: #2b2d42;
+  }
+  
+  
+  /****** Screen reader text utility clsas *******/
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  
